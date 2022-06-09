@@ -1,8 +1,8 @@
 Package: ToxicR
 Type: Package
 Title: Analyzing Toxicology Dose-Response Data
-Version: 22.5
-Date: 2022-05-31
+Version: 22.5.1
+Date: 2022-06-05
 Authors@R: 
     c(
     person(given = "Matt",
@@ -44,6 +44,10 @@ Authors@R:
            family = "Stamm",
            role = "ctb",
            comment ="Maintainer of nloptr Packag 2.0.1 from which all compile scripts were taken."),
+    person(given = "Dirk",
+           family = "Eddelbuettel",
+           role = "ctb",
+           comment ="Contributed script to download GSL, as in RcppGSL."),
     person("U.S. Deptartment of Health and Human Services",
            role="cph",
            comment ="Owns Copyright for all ToxicR code outside NLOPT and nloptr scripts.")
@@ -74,7 +78,7 @@ Suggests: rmarkdown, actuar (>= 3.2-0),ggpubr (>= 0.4.0), testthat (>=
         3.1.0),gridExtra (>= 2.3), VIM (>= 6.1.1), knitr (>= 1.36),
         modules, plotly (>= 4.9.2.1)
 NeedsCompilation: yes
-Packaged: 2022-05-25 15:11:11 UTC; wheelermw
+Packaged: 2022-06-08 23:16:02 UTC; matt
 Author: Matt Wheeler [aut, cre] (<https://orcid.org/0000-0002-8242-2391>),
   Sooyeong Lim [aut],
   Eric Wimberly [ctb],
@@ -88,7 +92,9 @@ Author: Matt Wheeler [aut, cre] (<https://orcid.org/0000-0002-8242-2391>),
   Steven Johnson [ctb] (Author of NLOPT.),
   Aymeric Stamm [ctb] (Maintainer of nloptr Packag 2.0.1 from which all
     compile scripts were taken.),
+  Dirk Eddelbuettel [ctb] (Contributed script to download GSL, as in
+    RcppGSL.),
   U.S. Deptartment of Health and Human Services [cph] (Owns Copyright for
     all ToxicR code outside NLOPT and nloptr scripts.)
 Repository: CRAN
-Date/Publication: 2022-05-27 07:40:05 UTC
+Date/Publication: 2022-06-09 09:10:06 UTC
