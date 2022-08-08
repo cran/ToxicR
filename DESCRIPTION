@@ -1,8 +1,8 @@
 Package: ToxicR
 Type: Package
 Title: Analyzing Toxicology Dose-Response Data
-Version: 22.5.1
-Date: 2022-06-05
+Version: 22.8.1.0.2
+Date: 2022-08-31
 Authors@R: 
     c(
     person(given = "Matt",
@@ -78,7 +78,7 @@ Suggests: rmarkdown, actuar (>= 3.2-0),ggpubr (>= 0.4.0), testthat (>=
         3.1.0),gridExtra (>= 2.3), VIM (>= 6.1.1), knitr (>= 1.36),
         modules, plotly (>= 4.9.2.1)
 NeedsCompilation: yes
-Packaged: 2022-06-08 23:16:02 UTC; matt
+Packaged: 2022-08-08 13:52:30 UTC; wheelermw
 Author: Matt Wheeler [aut, cre] (<https://orcid.org/0000-0002-8242-2391>),
   Sooyeong Lim [aut],
   Eric Wimberly [ctb],
@@ -97,4 +97,4 @@ Author: Matt Wheeler [aut, cre] (<https://orcid.org/0000-0002-8242-2391>),
   U.S. Deptartment of Health and Human Services [cph] (Owns Copyright for
     all ToxicR code outside NLOPT and nloptr scripts.)
 Repository: CRAN
-Date/Publication: 2022-06-09 09:10:06 UTC
+Date/Publication: 2022-08-08 15:30:02 UTC
