@@ -1,7 +1,7 @@
 /*
- 
- * Copyright 2020  NIEHS <matt.wheeler@nih.gov>
- * 
+ * Copyright 2020  US HHS, NIEHS 
+ * Author Matt Wheeler 
+ * e-mail: <matt.wheeler@nih.gov>
  *
  *Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
  *and associated documentation files (the "Software"), to deal in the Software without restriction, 
@@ -92,6 +92,7 @@ mcmcSamples MCMC_bmd_analysis_DNC(Eigen::MatrixXd Y, Eigen::MatrixXd D, Eigen::M
     // there are n x samples generated
     // ziggurat is used as it is the fastest sampler algorithm gsl has
   Eigen::MatrixXd rNormal(n,samples);
+  rNormal.setZero(); 
   gsl_rng * r;
     //gsl_rng_env_setup();
   r = gsl_rng_alloc (gsl_rng_mt19937);
@@ -116,7 +117,9 @@ mcmcSamples MCMC_bmd_analysis_DNC(Eigen::MatrixXd Y, Eigen::MatrixXd D, Eigen::M
   Eigen::MatrixXd nSamples  = chol*rNormal; // variance of each row
                                               // is is now L'L = cov
   Eigen::MatrixXd penLike(1,samples);
+  penLike.setZero(); 
   Eigen::MatrixXd BMD(1,samples);
+  BMD.setZero(); 
   /////////////////////////////////////////////////////////////////
   nSamples.col(0) = mu; // starting value of the MCMC
  
@@ -211,7 +214,7 @@ mcmcSamples mcmc_continuous(cBMDModel<LL, PR>  *model, int samples,
   // there are n x samples generated
   // ziggurat is used as it is the fastest sampler algorithm gsl has
   Eigen::MatrixXd rNormal(n,samples);
-
+  rNormal.setZero(); 
   gsl_rng * r;
   //gsl_rng_env_setup();
   r = gsl_rng_alloc (gsl_rng_mt19937);
@@ -230,7 +233,9 @@ mcmcSamples mcmc_continuous(cBMDModel<LL, PR>  *model, int samples,
   Eigen::MatrixXd nSamples  = chol*rNormal; // variance of each row
   // is is now LL' = cov
   Eigen::MatrixXd penLike(1,samples);
+  penLike.setZero(); 
   Eigen::MatrixXd BMD(1,samples);
+  BMD.setZero(); 
   /////////////////////////////////////////////////////////////////
   nSamples.col(0) = mu; // starting value of the MCMC
   

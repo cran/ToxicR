@@ -1,6 +1,8 @@
 /*
- 
- * Copyright 2020  NIEHS <matt.wheeler@nih.gov>
+ * 
+ * Copyright 2020  US. Department of Health and Human Services (HHS), 
+ * National Institute of Environmental Health Sciences (NIEHS)
+ * Email: Matt Wheeler  <matt.wheeler@nih.gov>
  * 
  *
  *Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
@@ -86,34 +88,34 @@ List convert_dichotomous_fit_to_list(dichotomous_model_result *result){
   switch(result->model){
   
   case dich_model::d_hill: 
-    sprintf(str,"Model:  %s", "Hill"); 
+    snprintf(str,160,"Model:  %s", "Hill"); 
     break; 
   case dich_model::d_gamma: 
-    sprintf(str,"Model:  %s", "Gamma"); 
+    snprintf(str,160,"Model:  %s", "Gamma"); 
     break;
   case dich_model::d_logistic:
-    sprintf(str,"Model:  %s", "Logistic"); 
+    snprintf(str,160,"Model:  %s", "Logistic"); 
     break;	
   case dich_model::d_loglogistic: 
-    sprintf(str,"Model:  %s", "Log-Logistic"); 
+    snprintf(str,160,"Model:  %s", "Log-Logistic"); 
   break; 
   case dich_model::d_logprobit: 
-    sprintf(str,"Model:  %s", "Log-Probit");
+    snprintf(str,160,"Model:  %s", "Log-Probit");
   break; 
   case dich_model::d_multistage: 
-    sprintf(str,"Model:  %s", "Multistage");
+    snprintf(str,160,"Model:  %s", "Multistage");
   break;
   case dich_model::d_qlinear: 
-    sprintf(str,"Model:  %s", "Quantal-Linear");
+    snprintf(str,160,"Model:  %s", "Quantal-Linear");
   break; 
   case dich_model::d_probit: 
-    sprintf(str,"Model:  %s", "Probit");
+    snprintf(str,160,"Model:  %s", "Probit");
   break; 
   case dich_model::d_weibull:
-    sprintf(str,"Model: %s", "Weibull");
+    snprintf(str,160,"Model: %s", "Weibull");
   break; 
   default: 
-    sprintf(str,"Model:  %s", "Danger");
+    snprintf(str,160,"Model:  %s", "Danger");
   break;  
   }
   double maximum = result->max; 
@@ -141,10 +143,10 @@ List convert_dichotomous_fit_to_list(dichotomous_model_result *result){
 
 List convert_dichotomous_maresults_to_list(dichotomousMA_result *result){
   List fittedModels; 
-  char str[80]; 
+  char str[160]; 
   
   for(int i = 0; i < result->nmodels ; i++){
-    sprintf(str,"Fitted_Model_%d",i+1);
+    snprintf(str,160,"Fitted_Model_%d",i+1);
     fittedModels.push_back(convert_dichotomous_fit_to_list(result->models[i]),
                            str); 
   }
@@ -180,42 +182,42 @@ List convert_continuous_fit_to_list(continuous_model_result *result){
 		covM(i,j) = result->cov[i + j*result->nparms]; 
 	  }
   } 
-  char dist[80];
-  char str[160]; 
+  char dist[160];
+  char str[360]; 
   
   switch(result->dist){
 	   case distribution::normal:
-			sprintf(dist,"Distribution: %s","Normal");
+			snprintf(dist,160,"Distribution: %s","Normal");
 	   break; 
 	   case distribution::normal_ncv:
-			sprintf(dist,"Distribution: %s","Normal-NCV");
+			snprintf(dist,160,"Distribution: %s","Normal-NCV");
 	   break; 
 	   case distribution::log_normal:
-			sprintf(dist,"Distribution: %s","Log-Normal");
+			snprintf(dist,160,"Distribution: %s","Log-Normal");
 	   break; 
   }
   
   switch(result->model){
 	case cont_model::hill:
-		sprintf(str,"Model: %s %s", "Hill",dist); 
+		snprintf(str,360,"Model: %s %s", "Hill",dist); 
 	break; 
 	case cont_model::exp_3:
-		sprintf(str,"Model: %s %s", "Exponential-3",dist); 
+		snprintf(str,360,"Model: %s %s", "Exponential-3",dist); 
 	break;
 	case cont_model::exp_5:
-		sprintf(str,"Model: %s %s", "Exponential-5",dist); 
+		snprintf(str,360,"Model: %s %s", "Exponential-5",dist); 
 	break;	
 	case cont_model::power: 
-		sprintf(str,"Model: %s %s", "Power",dist);
+		snprintf(str,360,"Model: %s %s", "Power",dist);
 	break; 
   case cont_model::funl:
-          sprintf(str,"Model: %s %s", "FUNL", dist); 
+    snprintf(str,360,"Model: %s %s", "FUNL", dist); 
      break; 
   case cont_model::polynomial:
-    sprintf(str,"Model: %s %s", "Polynomial", dist); 
+    snprintf(str,360,"Model: %s %s", "Polynomial", dist); 
     break; 
   default: 
-    sprintf(str,"Model: %s %s", "Danger","Danger");
+    snprintf(str,360,"Model: %s %s", "Danger","Danger");
 	break;  
   }
   double maximum = result->max; 
@@ -245,10 +247,10 @@ List convert_continuous_fit_to_list(continuous_model_result *result){
 List convert_continuous_maresults_to_list(continuousMA_result *result){
   
   List fittedModels; 
-  char str[80]; 
+  char str[160]; 
   
   for(int i = 0; i < result->nmodels ; i++){
-    sprintf(str,"Fitted_Model_%d",i+1);
+    snprintf(str,160,"Fitted_Model_%d",i+1);
     fittedModels.push_back(convert_continuous_fit_to_list(result->models[i]),
                            str); 
   }
@@ -378,10 +380,10 @@ List convert_MCMC_fit_to_list(bmd_analysis_MCMC *a){
 
 List convert_mcmc_results(const ma_MCMCfits *a){
   List rV; 
-  char str[80]; 
+  char str[160]; 
 
   for (unsigned int i=0; i < a->nfits; i++){
-    sprintf(str,"Fitted_Model_%d",i+1);
+    snprintf(str,160,"Fitted_Model_%d",i+1);
     rV.push_back(convert_MCMC_fit_to_list(a->analyses[i]),
                  str); 
     

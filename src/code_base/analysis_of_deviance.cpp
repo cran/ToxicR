@@ -1,5 +1,7 @@
-/* Copyright 2021  NIEHS <matt.wheeler@nih.gov>
- * 
+/* 
+* Copyright 2020  US. Department of Health and Human Services (HHS), 
+ * National Institute of Environmental Health Sciences (NIEHS)
+ * Email: Matt Wheeler  <matt.wheeler@nih.gov>
  *
  *Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
  *and associated documentation files (the "Software"), to deal in the Software without restriction, 
@@ -93,7 +95,8 @@ void log_normal_AOD_fits(Eigen::MatrixXd Y, Eigen::MatrixXd X,
   }
   a1Priors.row(nParms - 1) << 0, 0, 1, -1e7, 1e7;
   
-  Eigen::MatrixXd startV1(a1Test.nParms(),1); 
+  Eigen::MatrixXd startV1(a1Test.nParms(),1);
+  startV1.setZero(); 
   double tempV = 0.0; 
   for (unsigned int i = 0; i < InitA.rows() - 1; i++){
     startV1(i,0) = exp(InitA(i,0));
@@ -115,6 +118,7 @@ void log_normal_AOD_fits(Eigen::MatrixXd Y, Eigen::MatrixXd X,
   std::vector<double> fix2(nParms); for (unsigned int i = 0; i < nParms; i++) { fix2[i] = 0.0; }
   std::vector<bool> isfix2(nParms); for (unsigned int i = 0; i < nParms; i++) { isfix2[i] = false; }
   Eigen::MatrixXd a2Priors(nParms, NUM_PRIOR_COLS);
+  a2Priors.setZero(); 
   for (unsigned int i = 0; i < nParms; i++) {
     a2Priors.row(i) << 0, 0, 1, -1e8, 1e8;
   }
@@ -123,7 +127,7 @@ void log_normal_AOD_fits(Eigen::MatrixXd Y, Eigen::MatrixXd X,
   }
   IDcontinuousPrior a2Init(a2Priors);
   Eigen::MatrixXd startV2(nParms,1);
-
+  startV2.setZero(); 
   for (unsigned int i = 0; i < nParms/2; i++ ){
     startV2(i,0) = InitA(i,0); 
   } 
@@ -153,12 +157,14 @@ void log_normal_AOD_fits(Eigen::MatrixXd Y, Eigen::MatrixXd X,
   std::vector<double> fix4(nParms); for (unsigned int i = 0; i < nParms; i++) { fix4[i] = 0.0; }
   std::vector<bool> isfix4(nParms); for (unsigned int i = 0; i < nParms; i++) { isfix4[i] = false; }
   Eigen::MatrixXd rPriors(nParms, NUM_PRIOR_COLS);
+  rPriors.setZero(); 
   for (unsigned int i = 0; i < nParms; i++) {
     rPriors.row(i) << 0, 1, 1, 0, 1e8;
   }
   rPriors.row(nParms - 1) << 0, 0, 1, -1e8, 1e8;
 
   Eigen::MatrixXd startR(2,1);
+  startR.setZero(); 
   startR(0,0) = exp(InitB(0,0));
   startR(1,0) = InitB(0,1);
   IDcontinuousPrior rInit(rPriors);
@@ -185,6 +191,7 @@ void normal_AOD_fits(Eigen::MatrixXd Y, Eigen::MatrixXd X,
   std::vector<double> fix1(nParms); for (unsigned int i = 0; i < nParms; i++) { fix1[i] = 0.0; }
   std::vector<bool> isfix1(nParms); for (unsigned int i = 0; i < nParms; i++) { isfix1[i] = false; }
   Eigen::MatrixXd a1Priors(nParms, NUM_PRIOR_COLS);
+  a1Priors.setZero(); 
   for (unsigned int i = 0; i < nParms; i++) {
     a1Priors.row(i) << 0, 0, 1, -1e8, 1e8;
   }
@@ -217,7 +224,7 @@ void normal_AOD_fits(Eigen::MatrixXd Y, Eigen::MatrixXd X,
   InitB = InitB.inverse()*meanX2.transpose()*W*Y;
  
   Eigen::MatrixXd startV1(a1Test.nParms(),1); 
-  
+  startV1.setZero(); 
   double tempV = 0.0; 
  
   for (unsigned int i = 0; i < a1Test.nParms()-1; i++){
@@ -238,6 +245,7 @@ void normal_AOD_fits(Eigen::MatrixXd Y, Eigen::MatrixXd X,
   std::vector<double> fix2(nParms); for (unsigned int i = 0; i < nParms; i++) { fix2[i] = 0.0; }
   std::vector<bool> isfix2(nParms); for (unsigned int i = 0; i < nParms; i++) { isfix2[i] = false; }
   Eigen::MatrixXd a2Priors(nParms, NUM_PRIOR_COLS);
+  a2Priors.setZero(); 
   for (unsigned int i = 0; i < nParms; i++) {
     a2Priors.row(i) << 0, 0, 1, -1e8, 1e8;
   }
@@ -247,6 +255,7 @@ void normal_AOD_fits(Eigen::MatrixXd Y, Eigen::MatrixXd X,
   
   IDcontinuousPrior a2Init(a2Priors);
   Eigen::MatrixXd startV2(nParms,1);
+  startV2.setZero(); 
   for (unsigned int i = 0; i < nParms/2; i++ ){
     startV2(i,0) = InitA(i,0); 
   } 
@@ -267,6 +276,7 @@ void normal_AOD_fits(Eigen::MatrixXd Y, Eigen::MatrixXd X,
   std::vector<double> fix3(nParms); for (unsigned int i = 0; i < nParms; i++) { fix3[i] = 0.0; }
   std::vector<bool> isfix3(nParms); for (unsigned int i = 0; i < nParms; i++) { isfix3[i] = false; }
   Eigen::MatrixXd a3Priors(nParms, NUM_PRIOR_COLS);
+  a3Priors.setZero(); 
   for (unsigned int i = 0; i < nParms; i++) {
     a3Priors.row(i) << 0, 0, 1, -1e8, 1e8;
   }
@@ -307,7 +317,7 @@ void normal_AOD_fits(Eigen::MatrixXd Y, Eigen::MatrixXd X,
   std::vector<double> fixR(nParms); for (unsigned int i = 0; i < nParms; i++) { fixR[i] = 0.0; }
   std::vector<bool> isfixR(nParms); for (unsigned int i = 0; i < nParms; i++) { isfixR[i] = false; }
   Eigen::MatrixXd RPriors(nParms, NUM_PRIOR_COLS);
-
+  RPriors.setZero(); 
   for (unsigned int i = 0; i < nParms; i++) {
      RPriors.row(i) << 0, 0, 1, -1e8, 1e8;
   }

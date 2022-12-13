@@ -1,8 +1,8 @@
 Package: ToxicR
 Type: Package
 Title: Analyzing Toxicology Dose-Response Data
-Version: 22.8.1.0.3
-Date: 2022-10-03
+Version: 22.12.1.0.7
+Date: 2022-12-15
 Authors@R: 
     c(
     person(given = "Matt",
@@ -48,7 +48,7 @@ Authors@R:
            family = "Eddelbuettel",
            role = "ctb",
            comment ="Contributed script to download GSL, as in RcppGSL."),
-    person("U.S. Deptartment of Health and Human Services",
+    person("U.S. Deptartment of Health and Human Services (US HHS), National Institute of Environmental Health Sciences (NIEHS)",
            role="cph",
            comment ="Owns Copyright for all ToxicR code outside NLOPT and nloptr scripts.")
            )
@@ -74,11 +74,11 @@ Imports: Rcpp (>= 1.0.0), ggplot2 (>= 3.3.2), shiny (>= 1.5.0), coda
 LinkingTo: Rcpp, RcppEigen, RcppGSL
 RoxygenNote: 7.2.1
 VignetteBuilder: knitr
-Suggests: rmarkdown, actuar (>= 3.2-0),ggpubr (>= 0.4.0), testthat (>=
-        3.1.0),gridExtra (>= 2.3), VIM (>= 6.1.1), knitr (>= 1.36),
-        modules, plotly (>= 4.9.2.1)
+Suggests: plotly (>= 4.9.2.1), rmarkdown, actuar (>= 3.2-0),ggpubr (>=
+        0.4.0), testthat (>= 3.1.0),gridExtra (>= 2.3), VIM (>= 6.1.1),
+        knitr (>= 1.36), modules
 NeedsCompilation: yes
-Packaged: 2022-10-12 12:03:57 UTC; wheelermw
+Packaged: 2022-12-12 12:59:33 UTC; wheelermw
 Author: Matt Wheeler [aut, cre] (<https://orcid.org/0000-0002-8242-2391>),
   Sooyeong Lim [aut],
   Eric Wimberly [ctb],
@@ -94,7 +94,8 @@ Author: Matt Wheeler [aut, cre] (<https://orcid.org/0000-0002-8242-2391>),
     compile scripts were taken.),
   Dirk Eddelbuettel [ctb] (Contributed script to download GSL, as in
     RcppGSL.),
-  U.S. Deptartment of Health and Human Services [cph] (Owns Copyright for
-    all ToxicR code outside NLOPT and nloptr scripts.)
+  U.S. Deptartment of Health and Human Services (US HHS), National
+    Institute of Environmental Health Sciences (NIEHS) [cph] (Owns
+    Copyright for all ToxicR code outside NLOPT and nloptr scripts.)
 Repository: CRAN
-Date/Publication: 2022-10-13 11:22:36 UTC
+Date/Publication: 2022-12-13 12:40:05 UTC

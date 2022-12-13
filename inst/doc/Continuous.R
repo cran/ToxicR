@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
 cont_data           <- matrix(0,nrow=5,ncol=4)
 colnames(cont_data) <- c("Dose","Mean","N","SD")
 cont_data[,1] <- c(0,50,100,200,400)
-cont_data[,2] <- c(5.26,5.76,6.13,8.24,9.23)
+cont_data[,2] <- c(5.26,5.76,7.13,9.24,9.23)
 cont_data[,3] <- c(20,20,20,20,20)
 cont_data[,4]<-  c(2.23,1.47,2.47,2.24,1.56)
 Y <- cont_data[,2:4]
@@ -123,17 +123,6 @@ poly_sd <- single_continuous_fit(cont_data[,"Dose"],Y,
 
 plot(poly_sd)
 
-
-## ----run_laplace_MA, fig.height = 5, fig.width = 6----------------------------
-ma_sd_mcmc <- ma_continuous_fit(cont_data[,"Dose"],Y, fit_type="mcmc",
-                             BMD_TYPE="sd",BMR = 0.5,samples = 50000)
-
-ma_sd_laplace <- ma_continuous_fit(cont_data[,"Dose"],Y, fit_type="laplace",
-                                   BMD_TYPE="sd",BMR = 0.5)
-
-plot(ma_sd_mcmc)
-cleveland_plot(ma_sd_laplace)
-MAdensity_plot(ma_sd_mcmc)
 
 ## ----run_laplace_MA_2---------------------------------------------------------
 prior <- create_prior_list(normprior(0,1,-100,100),

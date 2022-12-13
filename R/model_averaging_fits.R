@@ -26,7 +26,7 @@
 #'  \item \code{bmd}: The BMD and the \eqn{100\times(1-2\alpha)\%} confidence intervals. 
 #' }
 #' @examples 
-#'\dontrun{
+#'\donttest{
 #' hill_m <- function(doses){
 #'        returnV <-  481  -250.3*doses^1.3/(40^1.3 + doses^1.3)
 #'        return(returnV)
@@ -252,7 +252,7 @@ ma_continuous_fit <- function(D,Y,model_list=NA, fit_type = "laplace",
     
         temp$ma_bmd = data_temp
         tempn$posterior_probs[is.nan(tempn$posterior_probs)] = 0
-        if (length(data_temp)>10 && (abs(sum(tempn$posterior_probs) -1) <= 1e-8)){
+        if (length(data_temp)>10 && (abs(sum(tempn$posterior_probs,na.rm=TRUE) -1) <= 1e-8)){
          
          
              te <- splinefun(data_temp[,2,drop=F],data_temp[,1,drop=F],method="hyman")
@@ -369,7 +369,7 @@ ma_continuous_fit <- function(D,Y,model_list=NA, fit_type = "laplace",
 #'  \item \code{bmd}: The BMD and the \eqn{100\times(1-2\alpha)\%} confidence intervals. 
 #' }
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' mData <- matrix(c(0, 2,50,
 #'                   1, 2,50,
 #'                   3, 10, 50,
